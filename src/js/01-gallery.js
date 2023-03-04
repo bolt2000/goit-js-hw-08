@@ -6,9 +6,7 @@ console.log(galleryItems);
 
 
 import SimpleLightbox from 'simplelightbox';
-
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 
 const div = document.querySelector('.gallery');
@@ -19,15 +17,16 @@ function creatImageCards(galleryItems) {
     return galleryItems
     .map(({ preview, original, description }) => {
         return `
-       <li>
+       <a
+       class="gallery__item"
+       href="${original}"
+       >
        <img
        class="gallery__image"
-       href="${original}"
        src="${preview}"
-       data-source="${original}"
        alt="${description}"
        >
-       </li>
+       </a>
         `;
     }).join('');
 }
@@ -39,3 +38,5 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
+
+
